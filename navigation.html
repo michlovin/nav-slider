@@ -7,16 +7,31 @@
     <title>Slider Header</title>
     <link rel="stylesheet" href="navigation-style.css" />
   </head>
-  <body>
-    <nav>
-      <div id="city"></div>
-      <a href="#">Cupertino</a>
-      <a href="#">New York City</a>
-      <a href="#">London</a>
-      <a href="#">Amsterdam</a>
-      <a href="#">Tokyo</a>
-      <a href="#">Hong Kong</a>
-      <a href="#">Sydney</a>
+  <body class="body">
+    <nav class="nav">
+      <div id="marker"></div>
+      <a class="nav a" href="#Cupertino">Cupertino</a>
+      <a class="nav a" href="#New">New York City</a>
+      <a class="nav a" href="#London">London</a>
+      <a class="nav a" href="#Amsterdam">Amsterdam</a>
+      <a class="nav a" href="#Tokyo">Tokyo</a>
+      <a class="nav a" href="#HK">Hong Kong</a>
+      <a class="nav a" href="#Sydney">Sydney</a>
     </nav>
+    <script type="text/javascript">
+      let marker = document.querySelector("#marker");
+      let item = document.querySelectorAll("nav a");
+
+      function indicator(e) {
+        marker.style.left = e.offsetLeft + "px";
+        marker.style.width = e.offsetWidth + "px";
+      }
+
+      item.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          indicator(e.target);
+        });
+      });
+    </script>
   </body>
 </html>
