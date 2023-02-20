@@ -6,21 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider Header</title>
     <link rel="stylesheet" href="navigation-style.css" />
+    <link rel="js" href="navigation.js" />
   </head>
   <body class="body">
-    <nav class="nav">
-      <div id="marker"></div>
-      <a class="nav a" href="#Cupertino">Cupertino</a>
-      <a class="nav a" href="#New">New York City</a>
-      <a class="nav a" href="#London">London</a>
-      <a class="nav a" href="#Amsterdam">Amsterdam</a>
-      <a class="nav a" href="#Tokyo">Tokyo</a>
-      <a class="nav a" href="#HK">Hong Kong</a>
-      <a class="nav a" href="#Sydney">Sydney</a>
-    </nav>
+    <div>
+      <nav class="nav">
+        <div id="marker"></div>
+        <a class="nav a" href="#Cupertino">Cupertino</a>
+        <a class="nav a" href="#New">New York City</a>
+        <a class="nav a" href="#London">London</a>
+        <a class="nav a" href="#Amsterdam">Amsterdam</a>
+        <a class="nav a" href="#Tokyo">Tokyo</a>
+        <a class="nav a" href="#HK">Hong Kong</a>
+        <a class="nav a" href="#Sydney">Sydney</a>
+      </nav>
+      <!-- <div class="space"></div> -->
+      <div class="line"></div>
+
+      <script>
+        let cities = [
+          {
+            section: "cupertino",
+            label: "Cupertino",
+            timeZone: "America/Los_Angeles",
+          },
+          {
+            section: "new-york-city",
+            label: "New York City",
+            timeZone: "America/New_York",
+          },
+          {
+            section: "london",
+            label: "London",
+            timeZone: "Europe/London",
+          },
+          {
+            section: "amsterdam",
+            label: "Amsterdam",
+            timeZone: "Europe/Amsterdam",
+          },
+          {
+            section: "tokyo",
+            label: "Tokyo",
+            timeZone: "JST",
+          },
+          {
+            section: "hong-kong",
+            label: "Hong Kong",
+            timeZone: "Hong Kong",
+          },
+          {
+            section: "sydney",
+            label: "Sydney",
+            timeZone: "Australia/Sydney",
+          },
+        ];
+
+        cities.map((city, i) => {
+          return document.write(
+            `
+        
+            <div'class="time" >
+                ${new Date().toLocaleTimeString("en-US", {
+                  hour12: false,
+                  timeZone: city.timeZone,
+                })}
+                </div>
+              
+        `
+          );
+        });
+      </script>
+    </div>
+
     <script type="text/javascript">
       let marker = document.querySelector("#marker");
       let item = document.querySelectorAll("nav a");
+      let line = document.querySelectorAll(".line");
+      // let time = document.querySelectorAll(".time");
 
       function indicator(e) {
         marker.style.left = e.offsetLeft + "px";
@@ -30,8 +93,64 @@
       item.forEach((link) => {
         link.addEventListener("click", (e) => {
           indicator(e.target);
+          let selectedEl = document.querySelectorAll(".selected");
+          selectedEl.forEach((element) => element.classList.remove("selected"));
+          e.target.classList.add("selected");
         });
       });
+
+      // let cities = [
+      //   {
+      //     section: "cupertino",
+      //     label: "Cupertino",
+      //     timeZone: "America/Los_Angeles",
+      //   },
+      //   {
+      //     section: "new-york-city",
+      //     label: "New York City",
+      //     timeZone: "America/New_York",
+      //   },
+      //   {
+      //     section: "london",
+      //     label: "London",
+      //     timeZone: "Europe/London",
+      //   },
+      //   {
+      //     section: "amsterdam",
+      //     label: "Amsterdam",
+      //     timeZone: "Europe/Amsterdam",
+      //   },
+      //   {
+      //     section: "tokyo",
+      //     label: "Tokyo",
+      //     timeZone: "JST",
+      //   },
+      //   {
+      //     section: "hong-kong",
+      //     label: "Hong Kong",
+      //     timeZone: "Hong Kong",
+      //   },
+      //   {
+      //     section: "sydney",
+      //     label: "Sydney",
+      //     timeZone: "Australia/Sydney",
+      //   },
+      // ];
+
+      // cities.map((city, i) => {
+      //   return document.write(
+      //     `
+
+      //       <div'class="time" >
+      //           ${new Date().toLocaleTimeString("en-US", {
+      //             hour12: false,
+      //             timeZone: city.timeZone,
+      //           })}
+      //           </div>
+
+      //   `
+      //   );
+      // });
     </script>
   </body>
 </html>

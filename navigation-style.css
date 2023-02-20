@@ -20,7 +20,7 @@ nav a {
   position: relative;
   margin: 0 20px;
   font-size: 1em;
-  color: #000;
+  color: rgb(0, 0, 0, 0.4);
   text-decoration: none;
 }
 
@@ -36,4 +36,17 @@ nav #marker {
   bottom: -8px;
   transition: 0.5s;
   border-radius: 4px;
+  z-index: 1;
+}
+
+.line {
+  border-bottom: 1px solid rgb(0, 0, 0, 0.4);
+  padding-top: 4px;
+}
+.selected {
+  font-weight: 800;
+  color: black !important;
+}
+.time {
+  position: relative;
 }
